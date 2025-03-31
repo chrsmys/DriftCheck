@@ -74,7 +74,7 @@ If any memory has “drifted away” — **DriftCheck** will report it.
 ### Swift Package Manager (SPM)
 
 1. From the File menu, select Add Package Dependencies...
-2. Enter "https://github.com/chrsmys/driftcheck-private" into the package repository URL text field.
+2. Enter "https://github.com/chrsmys/driftcheck" into the package repository URL text field.
 3. Add `DriftCheck` to your app target.
 
 ### Usage
