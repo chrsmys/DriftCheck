@@ -185,6 +185,8 @@ DriftReporter.shared.retentionPlan = { anchor in
 
 ## ⛵ Example App
 
+| ![Gif of Example 5 in the example project](https://driftcheck-assets.s3.us-east-1.amazonaws.com/ExampleApp/Example5-1.gif) | ![Gif of Example 2 in Example Project](https://driftcheck-assets.s3.us-east-1.amazonaws.com/ExampleApp/Example2.gif) |
+
 The provided [Example app](DriftCheckExample/DriftCheckExample.xcodeproj) includes four common memory leak scenarios that developers often run into.
 
 DriftCheck is already configured to detect each of these leaks. As a challenge, see if you can:
