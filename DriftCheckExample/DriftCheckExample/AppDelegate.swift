@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         DriftReporter.shared.start()
-        DriftReporter.shared.exceptionBehvaiors = [
+        DriftReporter.shared.exceptionBehaviors = [
             .log,
             .runtimeWarning,
             .custom {

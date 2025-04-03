@@ -17,7 +17,7 @@ final class NavigationControllerDriftReporterTests: XCTestCase {
         let object = NSObject()
         driftReporter.start()
         let expectation = expectation(description: "Ensure drift report")
-        driftReporter.exceptionBehvaiors = [.custom { report in
+        driftReporter.exceptionBehaviors = [.custom { report in
             XCTAssertFalse(report.anchorItem.retained)
             XCTAssertEqual(report.tetheredItems.count, 1)
             XCTAssertEqual(report.tetheredItems.first?.id, hexAddress(object))
@@ -47,7 +47,7 @@ final class NavigationControllerDriftReporterTests: XCTestCase {
 
         let expectation = expectation(description: "Ensure drift report")
         
-        driftReporter.exceptionBehvaiors = [.custom { [weak vc, weak object] report in
+        driftReporter.exceptionBehaviors = [.custom { [weak vc, weak object] report in
             guard let vc, let object else {
                 assertionFailure("VC and Tether should not be nil")
                 return
@@ -84,7 +84,7 @@ final class NavigationControllerDriftReporterTests: XCTestCase {
         let vc = UIViewController()
         vc.driftReporter = driftReporter
         XCTAssertEqual(vc.retentionMode, .optOut)
-        driftReporter.exceptionBehvaiors = [ .custom { _ in
+        driftReporter.exceptionBehaviors = [ .custom { _ in
             assertionFailure("Apple types should be ignored")
         }]
         
@@ -112,7 +112,7 @@ final class NavigationControllerDriftReporterTests: XCTestCase {
 
         let expectation = expectation(description: "Ensure drift report")
 
-        driftReporter.exceptionBehvaiors = [ .custom { [weak vc, weak object] report in
+        driftReporter.exceptionBehaviors = [ .custom { [weak vc, weak object] report in
             guard let vc, let object else {
                 assertionFailure("VC and Tether should not be nil")
                 return
@@ -149,7 +149,7 @@ final class NavigationControllerDriftReporterTests: XCTestCase {
 
         let expectation = expectation(description: "Ensure drift report")
 
-        driftReporter.exceptionBehvaiors = [ .custom { [weak object] report in
+        driftReporter.exceptionBehaviors = [ .custom { [weak object] report in
             guard let object else {
                 assertionFailure("Tether should not be nil")
                 return
@@ -180,7 +180,7 @@ final class NavigationControllerDriftReporterTests: XCTestCase {
     func testNoException() async throws {
         let driftReporter = DriftReporter()
         driftReporter.start()
-        driftReporter.exceptionBehvaiors = [ .custom { _ in
+        driftReporter.exceptionBehaviors = [ .custom { _ in
             assertionFailure("No exception should be thrown")
         }]
         autoreleasepool {
@@ -201,7 +201,7 @@ final class NavigationControllerDriftReporterTests: XCTestCase {
     func testMultipleAnchors() async throws {
         let driftReporter = DriftReporter()
         driftReporter.start()
-        driftReporter.exceptionBehvaiors = [ .custom { _ in
+        driftReporter.exceptionBehaviors = [ .custom { _ in
             assertionFailure("No exception should be thrown")
         }]
 
@@ -231,7 +231,7 @@ final class NavigationControllerDriftReporterTests: XCTestCase {
         
         let expectation = expectation(description: "Ensure drift report")
 
-        driftReporter.exceptionBehvaiors = [ .custom { [weak object] report in
+        driftReporter.exceptionBehaviors = [ .custom { [weak object] report in
             guard let object else {
                 assertionFailure("Tether should not be nil")
                 return

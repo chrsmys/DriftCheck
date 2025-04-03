@@ -20,7 +20,7 @@ final class TabViewControllerDriftReporterTests: XCTestCase {
         let object = NSObject()
         let vc = UIViewController()
         
-        driftReporter.exceptionBehvaiors = [ .custom { [weak vc, weak object] report in
+        driftReporter.exceptionBehaviors = [ .custom { [weak vc, weak object] report in
             guard let vc, let object else {
                 assertionFailure("VC and Tether should not be nil")
                 return
@@ -68,7 +68,7 @@ final class TabViewControllerDriftReporterTests: XCTestCase {
         
         let object = NSObject()
         
-        driftReporter.exceptionBehvaiors = [ .custom { [weak object] report in
+        driftReporter.exceptionBehaviors = [ .custom { [weak object] report in
             guard let object else {
                 assertionFailure("VC and Tether should not be nil")
                 return
@@ -111,7 +111,7 @@ final class TabViewControllerDriftReporterTests: XCTestCase {
         let object = NSObject()
         let vc = UIViewController()
         
-        driftReporter.exceptionBehvaiors = [ .custom { [weak vc, weak object] report in
+        driftReporter.exceptionBehaviors = [ .custom { [weak vc, weak object] report in
             guard let vc, let object else {
                 assertionFailure("VC and Tether should not be nil")
                 return

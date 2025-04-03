@@ -12,7 +12,7 @@ public class DriftReporter {
     public static let shared = DriftReporter()
     
     /// An ordered set of actions performed in order each time a drift check exception occurs.
-    public var exceptionBehvaiors: [ExceptionBehavior] = [
+    public var exceptionBehaviors: [ExceptionBehavior] = [
         ExceptionBehavior.log,
         ExceptionBehavior.runtimeWarning
     ]
@@ -67,7 +67,7 @@ public class DriftReporter {
     /*
         Ensures that the provided anchor is null as well as all tethered objects.
         If either the anchor or any tether objects or not nil then an exception will be
-        handled by the designated exceptionBehvaiors specified
+        handled by the designated exceptionBehaviors specified
      */
     func checkForDrift(_ anchor: AnchorPoint?, anchorId: String, anchorType: String) {
         var tetheredItems: [DriftCheckException.Item] = []
@@ -85,7 +85,7 @@ public class DriftReporter {
         }
         guard anchor != nil || !tetheredItems.isEmpty else { return }
         let result: DriftCheckException = .init(anchorItem: .init(id: anchorId, type: anchorType, retained: anchor != nil), tetheredItems: tetheredItems)
-        exceptionBehvaiors.forEach {
+        exceptionBehaviors.forEach {
             $0.handleResult(result: result)
         }
     }

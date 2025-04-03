@@ -7,7 +7,7 @@ final class AnchorPointTests: XCTestCase {
     @MainActor
     func testRetentionPlan() throws {
         let driftReporter = DriftReporter()
-        driftReporter.exceptionBehvaiors = []
+        driftReporter.exceptionBehaviors = []
         let vc = UIViewController()
         vc.driftReporter = driftReporter
         XCTAssertEqual(vc.retentionMode, .optOut)
