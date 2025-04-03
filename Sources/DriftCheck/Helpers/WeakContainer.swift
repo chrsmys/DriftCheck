@@ -19,7 +19,7 @@ struct WeakContainer: Equatable, Hashable {
     static func == (lhs: WeakContainer, rhs: WeakContainer) -> Bool {
         lhs.id == rhs.id
     }
-
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

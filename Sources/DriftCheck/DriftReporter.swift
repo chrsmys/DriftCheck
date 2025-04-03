@@ -23,7 +23,7 @@ public class DriftReporter {
 
     var currentEvaluations = Set<String>()
 
-    /***
+    /**
      This block determines the default retentionMode for all anchors. If retentionMode is
      explicitly set on an anchor then this block will not be used. By default UIViews have the
      retentionMode of 'optOut' unless it has tethers, then it is 'onDealloc'. ViewControllers provided
@@ -49,7 +49,7 @@ public class DriftReporter {
     }
     
     /**
-        Call this method to start reporting issues. This should be fired early in the app start for the best results.
+     Call this method to start reporting issues. This should be fired early in the app start for the best results.
      */
     public func start() {
         UIViewController.startRetainCycleDetector()

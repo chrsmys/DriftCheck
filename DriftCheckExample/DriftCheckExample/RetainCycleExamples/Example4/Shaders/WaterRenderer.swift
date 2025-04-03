@@ -28,13 +28,6 @@ class WaterRenderer: NSObject, MTKViewDelegate {
         mtkView.isPaused = false
         mtkView.enableSetNeedsDisplay = false
         mtkView.preferredFramesPerSecond = 60
-        
-//        let pan = UIPanGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handlePan(_:)))
-//                pan.maximumNumberOfTouches = 1
-//                pan.minimumNumberOfTouches = 1
-//                mtkView.addGestureRecognizer(pan)
-        
-//        mtkView.addGestureRecognizer(tap)
         mtkView.isOpaque = false
         mtkView.backgroundColor = .clear
         mtkView.clearColor = MTLClearColorMake(0.0, 0.0, 0.0, 0.0)
@@ -82,7 +75,6 @@ class WaterRenderer: NSObject, MTKViewDelegate {
     }
 
     private func updateRipples() {
-        // Simple ripple simulation (wave propagation)
         for y in 1..<height-1 {
             for x in 1..<width-1 {
                 let idx = y * width + x
@@ -91,7 +83,7 @@ class WaterRenderer: NSObject, MTKViewDelegate {
                           rippleData[idx - width] +
                           rippleData[idx + width]
                 let newHeight = (sum / 2) - rippleData[idx]
-                rippleData[idx] = newHeight * 0.985 // damping
+                rippleData[idx] = newHeight * 0.985
             }
         }
 
@@ -118,7 +110,7 @@ class WaterRenderer: NSObject, MTKViewDelegate {
 
     func draw(in view: MTKView) {
         updateRipples()
-        time += 1.0 / 60.0 // or use actual deltaTime for smoothness
+        time += 1.0 / 60.0
 
         guard let drawable = view.currentDrawable,
               let descriptor = view.currentRenderPassDescriptor,

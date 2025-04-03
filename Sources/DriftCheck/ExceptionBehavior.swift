@@ -23,7 +23,6 @@ public enum ExceptionBehavior {
     /// Performs a custom action. This can be useful for visual debugging through toasts or
     /// or silently logging exceptions in production
     /// - Parameter behavior: The action that should occur when an exception is fired.
-
     case custom(_ behavior: (DriftCheckException)->Void)
     
     func handleResult(result: DriftCheckException,
