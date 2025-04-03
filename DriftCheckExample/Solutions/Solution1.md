@@ -26,9 +26,9 @@ Xcode’s Debug Memory Graph tool is invaluable for debugging leaks like these.
 
 See [Apple's guide on using the Memory Graph tool](https://developer.apple.com/documentation/xcode/gathering-information-about-memory-use#Inspect-the-debug-memory-graph) for more information.
 
-| Step 2                                                                                                                 | Step 3-4                                                                                                               |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| <img width="fill" alt="Image" src="https://github.com/user-attachments/assets/933822b2-8b17-4803-b193-b06a7a640a9a" /> | <img width="fill" alt="Image" src="https://github.com/user-attachments/assets/c9c54075-5fd5-4a0f-9d5f-bc2eaab65c18" /> |
+| Step 2                                                                                                | Step 3-4                                                                                              |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| <img width="fill" alt="Image" src="https://driftcheck-assets.s3.us-east-1.amazonaws.com/Step2.png" /> | <img width="fill" alt="Image" src="https://driftcheck-assets.s3.us-east-1.amazonaws.com/Step3.png" /> |
 
 You should now see a zoomed in graph like in the picture above. Everything to the left of the node shows what retains it. Everything to the right shows what it retains.
 
@@ -38,7 +38,7 @@ A retain cycle is a circular reference — a case where an object holds onto som
 
 If you click the UIHostingView on the right side you can actually see that a UIHostingView on the left side is highlighted, indicating that it is the same instance that owns the instance of Example1 and is owned by Example1. We have found our memory leak.
 
-<img width="fill" alt="Image" src="https://github.com/user-attachments/assets/50814d27-6155-4ea6-a7d8-d918ea8fdf6a" />
+<img width="fill" alt="Image" src="https://driftcheck-assets.s3.us-east-1.amazonaws.com/Identify.png" />
 
 ### 🧵 Step 4: Find the Leak in code
 
@@ -48,14 +48,13 @@ Let’s look at the code for Example1. Specifically we know that the leak is due
 import SwiftUI
 
 class Example1: UIViewController {
-
     lazy var hostingView: UIView = UIHostingConfiguration {
         VStack {
             Button {
-                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true)
                 // ↑ Strong capture of self inside the action block
             } label: {
-                Text("Go Back")
+                Text("Walk the plank")
             }
         }
     }
@@ -84,7 +83,7 @@ Use `[weak self]` to avoid the retain cycle:
 Button { [weak self] in
    self?.navigationController?.popViewController(animated: true)
  } label: {
-   Text("Go Back")
+   Text("Walk the plank")
 }
 ```
 

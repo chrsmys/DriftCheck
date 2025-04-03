@@ -38,13 +38,14 @@ class MenuViewController: UIViewController {
     }
     
     private lazy var uikitExamples: [Row] = [
-        .init(title: "Pirate Grog Counter", description: "Example 1 - Track the grog that you drank.", viewController: { GrogCounterViewController() }),
-        .init(title: "Boat name ideas", description: "Example 2 - Get inspiration for your next boat name.", viewController: { BoatNamesViewController() }),
-        .init(title: "Boat tracker",  description: "Example 3 - Track your boat", viewController: { BoatTrackingViewController() })
+        .init(title: "Walk the plank", description: "Example 1 - A simple example of a retain cycle", viewController: { Example1() }),
+        .init(title: "Pirate Grog Counter", description: "Example 2 - Track the grog that you drank.", viewController: { GrogCounterViewController() }),
+        .init(title: "Boat name ideas", description: "Example 3 - Get inspiration for your next boat name.", viewController: { BoatNamesViewController() }),
+        .init(title: "Boat tracker",  description: "Example 4 - Track your boat", viewController: { BoatTrackingViewController() })
     ]
     
     private lazy var swiftUIExamples: [Row] = [
-        .init(title: "Go fish", description: "Example 4 - Catch as many fish as you can.", viewController: {
+        .init(title: "Go fish", description: "Example 5 - Catch as many fish as you can.", viewController: {
             UIHostingController(rootView: GoFishView())
         }, navbarCustomization: { navigationController in
             navigationController.navigationBar.tintColor = .white

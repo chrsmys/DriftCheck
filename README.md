@@ -35,7 +35,7 @@ class LeakyBoatViewController: UIViewController {
         view.backgroundColor = .systemBackground
 
         timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
-           self. refreshBoatStatus()
+           self.refreshBoatStatus()
         }
     }
 
@@ -193,7 +193,7 @@ DriftCheck is already configured to detect each of these leaks. As a challenge, 
 -   Fix the issues in each example
 -   Verify that **DriftCheck** no longer triggers an exception.
 
-If you get stuck, the Solutions folder walks through how to identify and fix each leak, complete with code and visual guides.
+If you get stuck, the [Solutions folder](DriftCheckExample/Solutions/) walks through how to identify and fix each leak, complete with code and visual guides.
 
 ## 🏴‍☠️ What To Do When a Leak Occurs
 
@@ -251,14 +251,13 @@ Let’s look at the code for Example1. Specifically we know that the leak is due
 import SwiftUI
 
 class Example1: UIViewController {
-
     lazy var hostingView: UIView = UIHostingConfiguration {
         VStack {
             Button {
-                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true)
                 // ↑ Strong capture of self inside the action block
             } label: {
-                Text("Go Back")
+                Text("Walk the plank")
             }
         }
     }
@@ -287,7 +286,7 @@ Use `[weak self]` to avoid the retain cycle:
 Button { [weak self] in
    self?.navigationController?.popViewController(animated: true)
  } label: {
-   Text("Go Back")
+   Text("Walk the plank")
 }
 ```
 
@@ -309,7 +308,7 @@ If you have a leak that wasn’t caught in the current examples, or one that too
 ### Where to Look
 
 -   Add new examples to the DriftCheckExample target in DriftCheckExample/Examples/
--   Include a matching fix and walkthrough (optional) in the Solutions/ folder
+-   Include a matching fix and walkthrough (optional) in the [Solutions folder](DriftCheckExample/Solutions/)
 -   Add test coverage in DriftCheckTests/
 
 If you’re unsure where to start, feel free to open an issue — happy to collaborate!
