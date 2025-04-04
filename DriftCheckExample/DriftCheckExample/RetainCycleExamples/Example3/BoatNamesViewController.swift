@@ -64,7 +64,7 @@ class BoatNamesViewController: UIViewController {
     }
     
     private func configureDataSource() {
-        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: self.configureCell)
+        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: configureCell)
     }
     
     private func configureCell(tableView: UITableView, indexPath: IndexPath, boat: Boat) -> UITableViewCell? {

@@ -1,4 +1,4 @@
-### 🧪 Step 1: Reproduce the Leak
+## 🧪 Step 1: Reproduce the Leak
 
 Build and run the [Example project](DriftCheckExample/DriftCheckExample.xcodeproj). Navigate to Example1, then exit the screen. You should see a report like this:
 
@@ -15,7 +15,7 @@ This report is telling us two things:
 
 <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXV1YWJyM25sb3diOWZrZWw0N2l0a3pyeGw2YWt0enpjMjE4eXM2MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1yY2RugygPSr4onbsy/giphy.gif" width="fill" />
 
-### 🧰 Step 2: Use the Memory Graph
+## 🧰 Step 2: Use the Memory Graph
 
 Xcode’s Debug Memory Graph tool is invaluable for debugging leaks like these.
 
@@ -32,7 +32,7 @@ See [Apple's guide on using the Memory Graph tool](https://developer.apple.com/d
 
 You should now see a zoomed in graph like in the picture above. Everything to the left of the node shows what retains it. Everything to the right shows what it retains.
 
-### 🌀 Step 3: Identify the Retain Cycle
+## 🌀 Step 3: Identify the Retain Cycle
 
 A retain cycle is a circular reference — a case where an object holds onto something that ends up holding onto it.
 
@@ -40,7 +40,7 @@ If you click the UIHostingView on the right side you can actually see that a UIH
 
 <img width="fill" alt="Image" src="https://driftcheck-assets.s3.us-east-1.amazonaws.com/Identify.png" />
 
-### 🧵 Step 4: Find the Leak in code
+## 🧵 Step 4: Find the Leak in code
 
 Let’s look at the code for Example1. Specifically we know that the leak is due to the HostingView holding onto Example1. Let's focus on that:
 
@@ -75,7 +75,7 @@ class Example1: UIViewController {
 
 The issue: The Button action within the hosting view strongly captures self, preventing Example1 from being deallocated.
 
-### ✅ The Fix
+## ✅ The Fix
 
 Use `[weak self]` to avoid the retain cycle:
 

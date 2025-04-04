@@ -1,8 +1,8 @@
-### Step 0
+## Step 0
 
 This guide assumes you have a baseline understanding of retain cycles and Xcode's Memory Graph Debugger. If you are unfamiliar then please check out [Solution 1](./Solution1.md) first. The solution to this problem is very similar to [Solution 1](./Solution1.md). If you feel that you understand Solution 1 then feel free to skip to [Solution3.md](./Solution3.md).
 
-### 🧪 Step 1: Reproduce the Leak
+## 🧪 Step 1: Reproduce the Leak
 
 ![Gif showing the Example app being run with leak on dismissal](https://driftcheck-assets.s3.us-east-1.amazonaws.com/Solution2/ReproLeak.gif)
 
@@ -21,7 +21,7 @@ This report is telling us that 3 things are being retained:
 2. GrogCounterViewController's UIView
 3. UIHostingContentView
 
-### 🧰 Step 2: Use the Memory Graph
+## 🧰 Step 2: Use the Memory Graph
 
 Now that we know that the anchor (GrogCounterViewController) has being retained let's check that out in the memory Graph Debugger first. Copy its memory address (ex: 0x11cf04480) from the DriftCheckout output and past it into the memory graph debug.
 
@@ -29,7 +29,7 @@ Now that we know that the anchor (GrogCounterViewController) has being retained 
 
 See [Solution1.md](./Solution1.md) or [Apple's guide on using the Memory Graph tool](https://developer.apple.com/documentation/xcode/gathering-information-about-memory-use#Inspect-the-debug-memory-graph) for more information on how to do this.
 
-### 🌀 Step 3: Identify the Retain Cycle
+## 🌀 Step 3: Identify the Retain Cycle
 
 Whenever I am first investigating a retain cycle I first just click through all of the items that the retained object holds onto. If there is a simple retain cycle then the issue typically jumps out.
 
@@ -37,7 +37,7 @@ Whenever I am first investigating a retain cycle I first just click through all 
 
 When you click on the UIHostingView on the right side of GrogCounterViewController you should see that a UIHostingView on the left side is highlighted as well. This indicates that they are the same instance. We have found our memory leak.
 
-### 🧵 Step 4: Find the Leak in code
+## 🧵 Step 4: Find the Leak in code
 
 Let’s look at the code for GrogCounterViewController. Specifically we know that the leak is due to the HostingView holding onto GrogCounterViewController. Let's focus on that:
 
@@ -67,7 +67,7 @@ class GrogCounterViewController: UIViewController {
 
 The issue: GrogCounterView holds onto a block that captures self, and self owns the hostingView which owns GrogCounterView 🤝.
 
-### ✅ The Fix
+## ✅ The Fix
 
 Use `[weak self]` to avoid the retain cycle:
 
