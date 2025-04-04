@@ -142,7 +142,7 @@ DriftReporter.shared.exceptionBehaviors = [
         // Logs to the console
         .log,
         // Triggers a runtime warning.
-        .runtimeWarning
+        .runtimeWarning,
         // Triggers an assertionFailure
         .assert,
         // Triggers a breakpoint
