@@ -47,8 +47,11 @@ class SonarPingView: UIView {
 
         self.layer.add(group, forKey: "sonar")
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + group.duration) {
-            self.removeFromSuperview()
+        // Although this is not required to be weak since the dispatch queue will eventually deallocate
+        // since we are just removing from superview it's not necessary to keep it
+        // around just to remove it.
+        DispatchQueue.main.asyncAfter(deadline: .now() + group.duration) { [weak self] in
+            self?.removeFromSuperview()
         }
     }
 }
