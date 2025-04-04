@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// An object that can be tethered to and is monitored for deallocation based on it's retentionMode.
+/// An object that can be tethered to and is monitored for deallocation based on its retentionMode.
 public protocol AnchorPoint: NSObject {
     /// Attaches an object to an anchor and ensures the attached object is
     /// deallocated along with the anchor.

@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// An exception that is fired when an item is left past it's retentionMode
+/// An exception that is fired when an item is left past its retentionMode
 public struct DriftCheckException {
     
     /// The anchor that triggered the warning
@@ -41,7 +41,7 @@ public struct DriftCheckException {
     public var message: String {
         var message = ""
         if anchorItem.retained {
-            message = "⚓️ \(anchorItem.message) still exists past it's retention plan."
+            message = "⚓️ \(anchorItem.message) still exists past its retention plan."
             if !tetheredItems.isEmpty {
                 message += "\nSome tethered objects still remain:"
                 message += "\n\(tetheredItems.map{"🛟 " + $0.message}.joined(separator: "\n"))"

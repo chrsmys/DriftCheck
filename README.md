@@ -5,7 +5,7 @@
 **DriftCheck** is a lightweight library that helps you detect retain cycles and forgotten references by tethering your objects to the well-defined lifecycle of UIKit/SwiftUI views. Get notified instantly when memory leaks:
 
 ```
-⚓️ SkiffViewController<0x130504280> still exists past it's retention plan.
+⚓️ SkiffViewController<0x130504280> still exists past its retention plan.
 Some tethered objects still remain:
 🛟 UIView<0x130509c70>
 ```
@@ -208,7 +208,7 @@ For those cases where the cause isn’t immediately obvious, let’s walk throug
 Build and run the [Example project](DriftCheckExample/DriftCheckExample.xcodeproj). Navigate to Example1, then exit the screen. You should see a report like this:
 
 ```
-⚓️ Example1<0x130504280> still exists past it's retention plan.
+⚓️ Example1<0x130504280> still exists past its retention plan.
 Some tethered objects still remain:
 🛟 UIView<0x130509c70>
 ```

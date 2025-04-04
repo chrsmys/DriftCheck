@@ -3,7 +3,7 @@
 Build and run the [Example project](DriftCheckExample/DriftCheckExample.xcodeproj). Navigate to Example1, then exit the screen. You should see a report like this:
 
 ```
-⚓️ Example1<0x130504280> still exists past it's retention plan.
+⚓️ Example1<0x130504280> still exists past its retention plan.
 Some tethered objects still remain:
 🛟 UIView<0x130509c70>
 ```

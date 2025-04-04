@@ -9,7 +9,7 @@ This guide assumes you have a baseline understanding of retain cycles and Xcode'
 Build and run the [Example project](DriftCheckExample/DriftCheckExample.xcodeproj). Navigate to the second example, then exit the screen. You should see a report like this:
 
 ```
-⚓️ GrogCounterViewController<0x1074043c0> still exists past it's retention plan.
+⚓️ GrogCounterViewController<0x1074043c0> still exists past its retention plan.
 Some tethered objects still remain:
 🛟 UIView<0x1071067c0>
 🛟 UIHostingContentView<GrogCounterView, EmptyView><0x11c80000 >
@@ -23,7 +23,7 @@ This report is telling us that 3 things are being retained:
 
 ### 🧰 Step 2: Use the Memory Graph
 
-Now that we know that the anchor (GrogCounterViewController) has being retained let's check that out in the memory Graph Debugger first. Copy it's memory address (ex: 0x11cf04480) from the DriftCheckout output and past it into the memory graph debug.
+Now that we know that the anchor (GrogCounterViewController) has being retained let's check that out in the memory Graph Debugger first. Copy its memory address (ex: 0x11cf04480) from the DriftCheckout output and past it into the memory graph debug.
 
 ![Gif showing opening the memory graph and pasting the memory address into the navigator](https://driftcheck-assets.s3.us-east-1.amazonaws.com/Solution2/OpenMemoryGraph.gif)
 
