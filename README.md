@@ -57,7 +57,7 @@ Even after the fisherman leaves the boat and dismisses `LeakyBoatViewController`
 
 ## 🛟 The Solution - DriftCheck
 
-UIKit/SwiftUI lifecycles are predictable and well understood. When a view or view controller is removed from the heirarchy we typically expect it to be deallocated. (This isn’t always the case — but don’t worry, **DriftCheck** handles those edge cases too. Keep reading.)
+UIKit/SwiftUI lifecycles are predictable and well understood. When a view or view controller is removed from the hierarchy we typically expect it to be deallocated. (This isn’t always the case — but don’t worry, **DriftCheck** handles those edge cases too. Keep reading.)
 
 **DriftCheck** leverages these known lifecycles by allowing you to `tether` any reference type to a UIView/UIViewController/SwiftUI View. These views and view controllers are known as **Anchors**.
 

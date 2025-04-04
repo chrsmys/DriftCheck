@@ -76,7 +76,7 @@ final class AnchorPointTests: XCTestCase {
     }
     
     @MainActor
-    func testIsInHeirarchyNavigationController() throws {
+    func testisInHierarchyNavigationController() throws {
         let firstVC = TestVC()
         let secondVC = TestVC()
         let navigationController = UINavigationController(rootViewController: firstVC)
@@ -84,25 +84,25 @@ final class AnchorPointTests: XCTestCase {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
 
-        XCTAssertTrue(firstVC.isInHeirarchy())
-        XCTAssertTrue(navigationController.isInHeirarchy())
-        XCTAssertFalse(secondVC.isInHeirarchy())
+        XCTAssertTrue(firstVC.isInHierarchy())
+        XCTAssertTrue(navigationController.isInHierarchy())
+        XCTAssertFalse(secondVC.isInHierarchy())
         
-        // When a new VC is pushed on the first VC technicaly gets
-        // removed from the view heirarchy and responder chain
+        // When a new VC is pushed on the first VC technically gets
+        // removed from the view hierarchy and responder chain
         // for the purposes of this library we still consider it
-        // displayed and in the heirarchy.
+        // displayed and in the hierarchy.
         navigationController.pushViewController(secondVC, animated: false)
-        XCTAssertTrue(firstVC.isInHeirarchy())
-        XCTAssertTrue(secondVC.isInHeirarchy())
+        XCTAssertTrue(firstVC.isInHierarchy())
+        XCTAssertTrue(secondVC.isInHierarchy())
         
         navigationController.popViewController(animated: false)
-        XCTAssertTrue(firstVC.isInHeirarchy())
-        XCTAssertFalse(secondVC.isInHeirarchy())
+        XCTAssertTrue(firstVC.isInHierarchy())
+        XCTAssertFalse(secondVC.isInHierarchy())
         
         navigationController.setViewControllers([secondVC], animated: false)
-        XCTAssertFalse(firstVC.isInHeirarchy())
-        XCTAssertTrue(secondVC.isInHeirarchy())
+        XCTAssertFalse(firstVC.isInHierarchy())
+        XCTAssertTrue(secondVC.isInHierarchy())
     }
     
     @MainActor

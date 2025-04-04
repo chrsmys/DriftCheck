@@ -15,7 +15,7 @@ public protocol AnchorPoint: NSObject {
 }
 
 protocol PrivateAnchorPoint: AnchorPoint {
-    @MainActor func isInHeirarchy() -> Bool
+    @MainActor func isInHierarchy() -> Bool
     @MainActor func children() -> [PrivateAnchorPoint]
     @MainActor func prepareToCheckStatus() -> Void
 }
@@ -92,7 +92,7 @@ extension PrivateAnchorPoint {
             deinitDetector = nil
             self.ensureChildrenNotified()
             waiter.wait(frames: frames) { @MainActor [weak self] in
-                if self?.isInHeirarchy() != true {
+                if self?.isInHierarchy() != true {
                     driftReporter.checkForDrift(self, anchorId: anchorId, anchorType: anchorType)
                 }
             }
@@ -139,7 +139,7 @@ extension PrivateAnchorPoint {
 
 extension PrivateAnchorPoint where Self: UIResponder {
     @MainActor
-    func isInHeirarchy() -> Bool {
+    func isInHierarchy() -> Bool {
         var nextResponder = self.nextOrParent()
         while nextResponder != nil {
             if nextResponder as? UIWindow != nil {
