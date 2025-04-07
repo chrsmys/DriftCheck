@@ -33,10 +33,10 @@ Let's first see if any of the direct items that BoatNamesViewController owns rev
 
 ![Gif showing clicking through memory graph debugger](https://driftcheck-assets.s3.us-east-1.amazonaws.com/Solution3/SelectOwnership.gif)
 
-Remember in [Solution 1](./Solution1.md) & [Solution 2](./Solution2.md) when we clicked through all of the nodes on the right side it revealed that one of the nodes also existed on the left side of the anchor. That didn't happen this time which means this retain cycle might be trickier. If we look at the left side of the anchor there also doesn't appear to be anything obvious:
+Remember in [Solution 1](./Solution1.md) & [Solution 2](./Solution2.md) when we clicked through all of the nodes on the right side it revealed that one of the nodes also existed on the left side of the anchor. That didn't happen this time which means this retain cycle might be trickier. Let's try a different approach. Let's look at everything that references the instance of BoatNamesViewController. That is everything on the left side:
 ![Left side of anchor](https://driftcheck-assets.s3.us-east-1.amazonaws.com/Solution3/LeftSide.png)
 
-This _is_ a tricky one. The memory graph debugger hides some references in certain circumstances. You can reveal these references by hitting the more options menu on any node in the graph. The more button on the left side will reveal options for objects referencing the node and the more button on the right will reveal options for the objects the node is referencing. Let's see what is hidden on the left:
+Nothing really stands out at first glance. This _is_ a tricky one. The memory graph debugger hides some references in certain circumstances (Reference [Xcode Memory Graph Gotchas](../Guides/XcodeMemoryGraphDebuggerGotchas.md)). You can reveal these references by hitting the more options menu on any node in the graph. The more button on the left side will reveal options for objects referencing the node and the more button on the right will reveal options for the objects the node is referencing. Let's see what is hidden on the left:
 
 ![Gif revealing hidden reference](https://driftcheck-assets.s3.us-east-1.amazonaws.com/Solution3/Culprit.gif)
 
